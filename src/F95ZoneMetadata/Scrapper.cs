@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -63,6 +63,11 @@ public class Scrapper
                 {
                     var bracketStartIndex = text.IndexOf('[');
                     var bracketEndIndex = text.IndexOf(']');
+
+                    if (bracketStartIndex == -1 || bracketEndIndex == -1)
+                    {
+                        return text;
+                    }
 
                     return text.Substring(bracketStartIndex + 1, bracketEndIndex - bracketStartIndex - 1);
                 })

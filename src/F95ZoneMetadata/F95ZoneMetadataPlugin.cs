@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -50,7 +50,7 @@ public class F95ZoneMetadataPlugin : MetadataPlugin
         _playniteAPI = playniteAPI;
         _logger = CustomLogger.GetLogger<F95ZoneMetadataPlugin>(nameof(F95ZoneMetadataPlugin));
 
-        AssemblyLoader.ValidateReferencedAssemblies(_logger);
+        //AssemblyLoader.ValidateReferencedAssemblies(_logger);
 
         _settings = new Settings(this, _playniteAPI);
 

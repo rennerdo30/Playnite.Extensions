@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -141,5 +141,23 @@ public class F95ZoneTests
         handler.CookieContainer = cookieContainer;
 
         return handler;
+    }
+
+            [Fact]
+    public void TestGetDataFromGame()
+    {
+        var game = new Game("https://f95zone.to/threads/euphoria-final-clock-up.638/");
+        Assert.Equal("638", F95ZoneMetadataProvider.GetIdFromGame(game));
+
+        Settings settings = new Settings();
+        var scrapper = F95ZoneMetadataProvider.SetupScrapper(settings);
+
+        var result = scrapper.ScrapPage("638");
+        Assert.NotNull(result);
+
+        var scrapperResult = result.GetAwaiter().GetResult();
+        Assert.NotNull(scrapperResult);
+        Assert.Equal("Euphoria", scrapperResult.Name);
+
     }
 }
